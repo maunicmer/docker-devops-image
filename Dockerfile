@@ -106,23 +106,6 @@ RUN wget https://github.com/xenolf/lego/releases/download/v2.1.0/lego_v2.1.0_lin
 
 ######################################################################
 
-RUN apt-get install -y \
-    gfortran \
-    libfreetype6-dev \
-    libhdf5-dev \
-    vim \
-    liblapack-dev \
-    libopenblas-dev \
-    libpng-dev && \
-    mkdir -p /tmp/talib && \
-    cd /tmp/talib && \
-    curl -fsSL http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz | tar xvz --strip-components 1 && \
-    ./configure --prefix=/usr && \
-    make && \
-    make install && \
-    apt clean && \
-    rm -Rf /tmp/*
-
 #### User setup
 RUN useradd --system --uid 1000 -m --shell /usr/bash devops && \
     mkdir -p /home/devops && \
